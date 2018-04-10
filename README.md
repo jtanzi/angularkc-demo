@@ -1,5 +1,5 @@
 # AngularkcDemo
-This project was created to serve as a demonstration of a small Angular application that displays a dashboard comprised of PrimeNg components.  PrimeNg is a rich component library for Angular developed by PrimeFaces.  You can learn more about PrimeNg by browsing to `https://www.primefaces.org/primeng/#/`.
+This project was created to serve as a demonstration of a small Angular application that displays a dashboard comprised of PrimeNg components.  PrimeNg is a rich component library for Angular developed by PrimeFaces.  You can learn more about PrimeNg by browsing to `https://www.primefaces.org/primeng/#/`. 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 
