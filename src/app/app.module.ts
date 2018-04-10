@@ -6,6 +6,7 @@ import { PanelModule } from 'primeng/panel';
 import { TabViewModule } from 'primeng/tabview';
 import { DataViewModule } from 'primeng/dataview';
 import { ChartModule } from 'primeng/chart';
+import { CardModule } from 'primeng/card';
 import { DragDropModule } from 'primeng/dragdrop';
 import { DropdownModule } from 'primeng/dropdown';
 import { SelectButtonModule } from 'primeng/selectbutton';
@@ -24,6 +25,7 @@ import { AppComponent } from './app.component';
     TabViewModule,
     DataViewModule,
     ChartModule,
+    CardModule,
     DragDropModule,
     DropdownModule,
     FormsModule,

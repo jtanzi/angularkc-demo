@@ -2,38 +2,91 @@
 
     <div class="ui-lg-4 ui-g-12">
         <!-- Panel -->
-        <p-panel header="Welcome" [toggleable]="true" [style]="{minHeight: '400px'}">
-            <h2>Welcome</h2>
-            <h2>{{ myName }}</h2>
-            <p-selectButton [options]="modes" [(ngModel)]="selectedMode"></p-selectButton>
+        <p-panel header="Overview" [toggleable]="true" styleClass="top-panel">
+            <div class="panel-heading">
+                <h2>Welcome</h2>
+                <h2>{{ myName }}</h2>
+            </div>
+            <!-- <p-selectButton [options]="modes" [(ngModel)]="selectedMode"></p-selectButton> -->
         </p-panel>
         <!-- Dropdown -->
     </div>
 
     <div class="ui-lg-4 ui-g-12">
         <!-- Widget Counter -->
-        <p-panel header="Count" [toggleable]="true" [style]="{minHeight: '400px'}">
-            <h1>{{ widgetCount }} </h1>
-            <h2>Widgets</h2> 
+        <p-panel header="Count" [toggleable]="true" styleClass="top-panel">
+            <div class="panel-heading">
+                <h1>{{ widgetCount }} </h1>
+                <h2>Widgets</h2> 
+            </div>
         </p-panel>
     </div>
 
     <div class="ui-lg-4 ui-g-12">
-        <!-- Tab View -->
-        <!-- Pie Chart -->
-        <p-panel header="Chart" [toggleable]="true" [style]="{minHeight: '400px'}">
-            <p-chart type="pie" [data]="widgets"></p-chart>
-            <button type="button" pButton (click)="update($event)"></button>
+        <!-- TabView -->
+        <p-panel header="Chart" [toggleable]="true" styleClass="top-panel">
+            <p-tabView>
+                <p-tabPanel header="Category">
+                    <!-- Pie -->
+                    <p-chart type="pie" [data]="pieData"></p-chart>
+                </p-tabPanel>
+                <p-tabPanel header="Sales">
+                    <!-- Bar -->
+                    <p-chart type="bar" [data]="barData"></p-chart>
+                </p-tabPanel>
+            </p-tabView>            
         </p-panel>
     </div>
 
 </div>
 
-<div id="bottom-section" class="ui-g">
+<div id="bottom-section">
 
-    <div class="ui-g-12">
+    <div>
         <!-- DataView -->
+        <p-dataView #dv [value]="widgets" filterBy="category" [sortField]="sortField" [sortOrder]="sortOrder">
 
+            <p-header>
+
+                <div class="ui-helper-clearfix">
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-4">
+                            <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By" (onChange)="onSortChange($event)" [autoWidth]="false" [style]="{'min-width':'15em'}"></p-dropdown>
+                        </div>
+                        <div class="ui-g-6 ui-md-4 filter-container">
+                            <div style="position:relative">
+                                <input type="search" pInputText placeholder="Search by category" (keyup)="dv.filter($event.target.value)">
+                            </div>
+                        </div>
+                        <div class="ui-g-6 ui-md-4" style="text-align:right">
+                            <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                        </div>
+                    </div>
+                </div>
+            </p-header>
+
+            <ng-template let-widget pTemplate="listItem">
+                <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+                    <div class="ui-g-12 ui-md-8 widget-details">
+                        <div class="ui-g">
+                            <div class="ui-g-2 ui-sm-6">Name: </div>
+                            <div class="ui-g-10 ui-sm-6"><b>{{widget.name}}</b></div>
+        
+                            <div class="ui-g-2 ui-sm-6">Category: </div>
+                            <div class="ui-g-10 ui-sm-6"><b>{{widget.category}}</b></div>
+
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template let-widget pTemplate="gridItem">
+                <div class="ui-g-12 ui-md-3">
+                    <p-card title="{{ widget.name }}" [style]="{ 'textAlign': 'center'}">
+                        {{ widget.category }}
+                    </p-card>
+                </div>
+            </ng-template>
+        </p-dataView>
         <!-- Drag & Drop -->
     </div>
 

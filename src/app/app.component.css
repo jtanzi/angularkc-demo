@@ -2,6 +2,7 @@ body {
     background-color: #AAA;
 }
 
-.top-panel {
-    min-height: 500px;
+
+.panel-heading {
+    margin-top: 100px;
 }
